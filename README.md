@@ -10,7 +10,7 @@ I was building a system to run a business while I was on a 4-month vacation. Tha
 
 The failure mode I was most worried about wasn't a bad deploy. It was a bad deploy that *keeps deploying*. Rollback fires, triggers a new deploy, new deploy fails, system loops. Each recovery attempt makes things worse. By the time I checked in, the site had been broken for days and the database was full of failed deployment records trying to rerun.
 
-The system doesn't need to be smart. It needs to fail well.
+The system needs to be smart enough to fail well.
 
 This framework implements classic defense-in-depth at the deployment layer: two production n8n workflows (Agent 5: Website Deployment, Agent 14: Website Health Monitor), 24 nodes across four protection layers. Preventive controls stop bad deploys before they ship. Detective controls catch problems after they land. Corrective controls revert damage automatically. Circuit breakers prevent the system from thrashing itself into a worse state.
 
